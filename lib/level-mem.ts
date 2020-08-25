@@ -5,6 +5,5 @@ import KeyvLevel from "./keyv-level"
 const store = new KeyvLevel("mem")
 
 export default <ArgumentsType extends unknown[],
-	ReturnType,
-	FunctionToMemoize = (...arguments_: ArgumentsType) => ReturnType
->(function_: FunctionToMemoize, {maxAge = Infinity}: {maxAge?: number} = {}): FunctionToMemoize => memoize(function_, {store, ttl: maxAge === Infinity ? undefined : maxAge}) as any
+	ReturnType
+>(function_: (...arguments_: ArgumentsType) => ReturnType, { maxAge = Infinity }: {maxAge?: number} = {}): (...arguments_: ArgumentsType) => Promise<ReturnType> => memoize(function_, { store, ttl: maxAge === Infinity ? undefined : maxAge }) as any

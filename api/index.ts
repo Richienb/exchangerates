@@ -1,4 +1,4 @@
-import {NowRequest, NowResponse} from "@vercel/node"
+import { NowRequest, NowResponse } from "@vercel/node"
 import got from "got"
 import mapObject from "map-obj"
 import Decimal from "decimal.js"
@@ -11,13 +11,13 @@ Sentry.init({
 	release: process.env.VERCEL_GITHUB_COMMIT_SHA
 })
 
-const changeExchangeRateBase = mem(async <ExchangeRates extends Record<string, number>>(exchangeRates: ExchangeRates, newBase: keyof ExchangeRates): Record<string, number> => {
+const changeExchangeRateBase = mem(<ExchangeRates extends Record<string, number>>(exchangeRates: ExchangeRates, newBase: keyof ExchangeRates): Record<string, number> => {
 	const newBaseExchangeRate = exchangeRates[newBase]
 	return mapObject(exchangeRates, (key: string, value) => [key, new Decimal(value).dividedBy(newBaseExchangeRate).toNumber()])
 })
 
 const getFixer = async () => {
-	const {body} = await got<{
+	const { body } = await got<{
 		success: boolean
 		error?: {
 			code: number
@@ -38,11 +38,11 @@ const getFixer = async () => {
 		throw new Error(`Fixer error: ${body.error!.type} (${body.error!.code}).`)
 	}
 
-	return lowercaseKeys(changeExchangeRateBase(body.rates, "USD"))
+	return lowercaseKeys(await changeExchangeRateBase(body.rates, "USD"))
 }
 
 const getOpenExchangeRates = async () => {
-	const {body} = await got<{
+	const { body } = await got<{
 		disclaimer: string
 		license: string
 		timestamp: number
@@ -54,6 +54,7 @@ const getOpenExchangeRates = async () => {
 		},
 		responseType: "json"
 	})
+
 	return lowercaseKeys(body.rates)
 }
 
@@ -63,7 +64,7 @@ const getExchangeRates = mem(async () => {
 		...openExchangeRates,
 		...fixer
 	}
-}, {maxAge: 86400})
+}, { maxAge: 86400 })
 
 export default async (request: NowRequest, response: NowResponse) => {
 	response.setHeader("Cache-Control", "Cache-Control: maxage=0, s-maxage=86400, stale-while-revalidate")

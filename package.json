@@ -14,8 +14,7 @@
 		"node": ">=10"
 	},
 	"scripts": {
-		"lint": "xo",
-		"test": "xo && ava"
+		"test": "xo"
 	},
 	"keywords": [],
 	"dependencies": {
