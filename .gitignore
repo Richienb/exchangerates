@@ -1,3 +1,6 @@
+# Memoized store
+mem/
+
 # Lockfiles
 
 package-lock.json

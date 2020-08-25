@@ -27,7 +27,6 @@
 		"level": "^6.0.1",
 		"lowercase-keys": "^2.0.0",
 		"map-obj": "^4.1.0",
-		"mem": "^6.1.0",
 		"memoized-keyv": "^1.1.2"
 	},
 	"devDependencies": {
