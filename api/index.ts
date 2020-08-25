@@ -3,6 +3,12 @@ import got from "got"
 import mapObject from "map-obj"
 import Decimal from "decimal.js"
 import lowercaseKeys from "lowercase-keys"
+import Sentry from "@sentry/node"
+
+Sentry.init({
+	dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+	release: process.env.VERCEL_GITHUB_COMMIT_SHA
+})
 
 const changeBase = <ExchangeRates extends Record<string, number>>(exchangeRates: ExchangeRates, newBase: keyof ExchangeRates): Record<string, number> => {
 	const newBaseExchangeRate = exchangeRates[newBase]

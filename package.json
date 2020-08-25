@@ -19,6 +19,7 @@
 	},
 	"keywords": [],
 	"dependencies": {
+		"@sentry/node": "^5.21.4",
 		"@vercel/node": "^1.7.4",
 		"decimal.js": "^10.2.0",
 		"got": "^11.5.2",
