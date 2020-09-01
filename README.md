@@ -10,7 +10,7 @@ npm install exchangerates
 
 ## API
 
-### GET https://exchangerates.richienb.vercel.app
+### GET https://exchangerates.vercel.app
 
 Returns an json object of currency exchange rates.
 
