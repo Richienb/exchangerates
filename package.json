@@ -1,8 +1,9 @@
 {
-	"name": "the-module",
+	"name": "exchangerates",
 	"version": "0.0.0",
-	"description": "My awesome module.",
-	"repository": "https://github.com/Richienb/the-module.git",
+	"private": true,
+	"description": "A simple exchange rates API.",
+	"repository": "https://github.com/Richienb/exchangerates.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
@@ -16,17 +17,18 @@
 	"scripts": {
 		"test": "xo"
 	},
-	"keywords": [],
+	"keywords": [
+		"exchangerates",
+		"exchange",
+		"value"
+	],
 	"dependencies": {
 		"@sentry/node": "^5.21.4",
 		"@vercel/node": "^1.7.4",
 		"decimal.js": "^10.2.0",
 		"got": "^11.5.2",
-		"keyv": "^4.0.1",
-		"level": "^6.0.1",
 		"lowercase-keys": "^2.0.0",
-		"map-obj": "^4.1.0",
-		"memoized-keyv": "^1.1.2"
+		"map-obj": "^4.1.0"
 	},
 	"devDependencies": {
 		"eslint-config-richienb": "^0.4.2",

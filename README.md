@@ -1,41 +1,30 @@
-# the-module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# exchangerates [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/exchangerates/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/exchangerates)
 
-My awesome module.
-
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+A simple exchange rates API.
 
 ## Install
 
 ```sh
-npm install the-module
-```
-
-## Usage
-
-```js
-const theModule = require("the-module");
-
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+npm install exchangerates
 ```
 
 ## API
 
-### theModule(input, options?)
+### GET https://exchangerates.richienb.vercel.app
 
-#### input
+Returns an json object of currency exchange rates.
 
-Type: `string`
+#### Query parameters
 
-Lorem ipsum.
-
-#### options
-
-Type: `object`
-
-##### postfix
+##### base
 
 Type: `string`\
-Default: `rainbows`
+Default: `usd`
 
-Lorem ipsum.
+Use a currency as the base.
+
+## Donating API keys
+
+To retrieve exchange rates, we use [fixer.io](https://fixer.io) and [openexchangerates.org](https://openexchangerates.org). In order to comply with the API quota, the conversion data is cached for 24 hours and historic data is not available.
+
+If you would like to contribute your API key to help improve this API, please send it to [richiebendall@gmail.com](mailto:richiebendall@gmail.com).
